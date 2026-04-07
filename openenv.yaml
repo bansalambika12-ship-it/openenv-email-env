@@ -1,0 +1,9 @@
+name: openenv-email-hackathon
+language: python
+entrypoint: inference.py
+description: Minimal OpenEnv-compatible email tasks (spam, priority, reply)
+env:
+  - API_BASE_URL
+  - MODEL_NAME
+  - HF_TOKEN
+  - TASK
