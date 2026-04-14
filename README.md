@@ -1,53 +1,103 @@
-# OpenEnv Email Hackathon (Minimal)
+# 🚀 AI Email Triage Engine
 
-This is a lightweight, runnable Python project with an OpenEnv-style environment and three email tasks:
+An intelligent email processing system that simulates how AI agents can classify, prioritize, and respond to emails in real-world scenarios.
 
-- Easy: spam classification (`easy_spam`)
-- Medium: email prioritization (`medium_priority`)
-- Hard: short reply generation (`hard_reply`)
+---
 
-## Project layout
+## 💡 Problem Statement
 
-- `env/email_env.py`: environment + Pydantic models (`Observation`, `Action`, `Reward`)
-- `tasks/tasks.py`: graders (0..1) + incremental reward helper
-- `inference.py`: runs one episode and prints `[START]`, `[STEP]`, `[END]`
-- `openenv.yaml`: minimal OpenEnv config
+Modern inboxes are overwhelmed with spam, urgent messages, and routine communication.
 
-## Quickstart (local)
+This project builds an **AI-powered email assistant** that:
+
+* Detects spam
+* Assigns priority
+* Suggests responses
+
+---
+
+## 🧠 What Makes This Project Unique
+
+Unlike basic ML models, this system is built as a:
+
+👉 **Custom evaluation environment (RL-style)**
+
+* Multi-task setup (3 tasks)
+* Reward-based scoring
+* Structured agent interaction
+* Real-time LLM integration
+
+---
+
+## ⚙️ System Design
+
+### 🔹 Environment Layer
+
+* Simulates email scenarios
+* Tracks state, steps, and rewards
+
+### 🔹 Task & Grading Layer
+
+* Custom scoring logic
+* Partial rewards (not binary)
+* Realistic evaluation
+
+### 🔹 Inference Layer
+
+* OpenAI-powered reasoning
+* Handles API failures gracefully
+
+---
+
+## 🛠️ Tech Stack
+
+* Python
+* OpenAI API
+* FastAPI
+* Docker
+* Hugging Face Spaces
+
+---
+
+## 📊 Sample Run
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # (Windows PowerShell: .venv\Scripts\Activate.ps1)
-pip install -r requirements.txt
-python inference.py
+[START] task=email env=openenv model=gpt-4.1-mini
+[STEP] step=1 reward=0.60 done=false
+[STEP] step=2 reward=0.85 done=false
+[STEP] step=3 reward=0.92 done=true
+[END] success=true score=0.92
 ```
 
-By default, if you **do not** set `HF_TOKEN` or `OPENAI_API_KEY`, `inference.py` uses a small built-in fallback policy so it still runs end-to-end without crashing.
+---
 
-## Using a model (OpenAI-compatible)
+## 🎯 Key Highlights
 
-Environment variables:
+* Multi-task AI environment
+* Robust error handling
+* Reward shaping logic
+* Clean modular architecture
 
-- `API_BASE_URL`: optional (set for OpenAI-compatible endpoints)
-- `MODEL_NAME`: model id/name (default: `gpt-4o-mini`)
-- `HF_TOKEN`: API key/token (preferred name per spec)
-- `OPENAI_API_KEY`: also supported as a fallback
-- `TASK`: `easy_spam` | `medium_priority` | `hard_reply` (default: `easy_spam`)
+---
 
-Example:
+## 📈 Learnings
 
-```bash
-export API_BASE_URL="https://api.openai.com/v1"
-export MODEL_NAME="gpt-4o-mini"
-export HF_TOKEN="YOUR_KEY"
-export TASK="hard_reply"
-python inference.py
-```
+* Designing agent-based systems
+* Debugging real-world AI pipelines
+* Handling API instability
+* Building evaluation frameworks
 
-## Docker
+---
 
-```bash
-docker build -t openenv-email .
-docker run --rm -e TASK=easy_spam openenv-email
-```
+## 🚀 Future Scope
 
+* UI dashboard
+* Larger dataset
+* Fine-tuned models
+* Real-time deployment
+
+---
+
+## 👩‍💻 Author
+
+Ambika Bansal
