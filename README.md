@@ -70,6 +70,11 @@ Unlike basic ML models, this system is built as a:
 ```
 
 ---
+## DEMO 
+
+<img width="852" height="441" alt="image" src="https://github.com/user-attachments/assets/4385cbfa-3483-4ee2-b605-dc19c007e409" />
+This system simulates an AI agent that processes emails using a custom environment 
+and evaluates actions through a reward-based mechanism.
 
 ## 🎯 Key Highlights
 
